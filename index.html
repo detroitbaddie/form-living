@@ -2,336 +2,824 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FORM Living | Modern Furniture</title>
-  <style>
-    :root {
-      --bg: #f8f7f4;
-      --text: #242321;
-      --muted: #77736d;
-      --line: #e6e2dc;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
-    }
-    header {
-      padding: 22px 6%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid var(--line);
-    }
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-      letter-spacing: 5px;
-    }
-    nav { font-size: 13px; letter-spacing: 1px; }
-    .hero {
-      text-align: center;
-      padding: 75px 20px 55px;
-    }
-    .eyebrow {
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 11px;
-      color: var(--muted);
-    }
-    h1 {
-      font-family: Georgia, serif;
-      font-size: clamp(38px, 6vw, 76px);
-      font-weight: normal;
-      margin: 18px 0;
-    }
-    .hero p {
-      color: var(--muted);
-      line-height: 1.7;
-    }
-    .products {
-      max-width: 1200px;
-      margin: auto;
-      padding: 20px 5% 80px;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 35px;
-    }
-    .product {
-      background: #fff;
-      border: 1px solid var(--line);
-      overflow: hidden;
-    }
-    .photo {
-      height: 360px;
-      background: #eae7e1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-    }
-    .photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-    .placeholder {
-      color: #777;
-      padding: 30px;
-      text-align: center;
-    }
-    .details { padding: 28px; }
-    h2 {
-      font-family: Georgia, serif;
-      font-weight: normal;
-      font-size: 29px;
-      margin: 8px 0;
-    }
-    .price { font-size: 20px; margin: 12px 0 22px; }
-    .description {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.7;
-    }
-    .swatches {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 22px 0;
-    }
-    .swatch {
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      border: 2px solid #ddd;
-      cursor: pointer;
-    }
-    .swatch.active { outline: 2px solid #222; outline-offset: 3px; }
-    .swatch:focus-visible { outline: 3px solid #333; }
-    .status { font-size: 13px; margin: 15px 0; }
-    .available { color: #286b43; }
-    .unavailable { color: #9d4a3d; }
-    .unknown { color: #8a6d32; }
-    .buy {
-      width: 100%;
-      padding: 17px;
-      border: 0;
-      background: #242321;
-      color: #fff;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      cursor: pointer;
-    }
-    .buy:disabled {
-      background: #aaa6a0;
-      cursor: not-allowed;
-    }
-    footer {
-      text-align: center;
-      padding: 45px 20px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 12px;
-    }
-    @media (max-width: 750px) {
-      .products { grid-template-columns: 1fr; }
-      .photo { height: 290px; }
-      nav { display: none; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f5f3ee">
+<title>Teddy Couches | Comfort, Reimagined</title>
+<meta name="description" content="Discover Teddy Couches: modern three-seater convertible corduroy sofas in ten beautiful colors.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#f5f3ee;
+  --paper:#fff;
+  --ink:#292b27;
+  --muted:#797b73;
+  --line:#e3e0d9;
+  --sage:#7b846d;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"DM Sans",sans-serif;
+}
+a{text-decoration:none;color:inherit}
+button{font:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{
+  outline:3px solid var(--sage);
+  outline-offset:3px;
+}
+.announcement{
+  background:var(--ink);
+  color:#fff;
+  text-align:center;
+  padding:12px;
+  font-size:10px;
+  letter-spacing:2px;
+}
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 6%;
+  height:78px;
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(245,243,238,.97);
+  backdrop-filter:blur(12px);
+}
+.logo{
+  font-family:Manrope,sans-serif;
+  font-size:25px;
+  font-weight:800;
+  letter-spacing:-1.7px;
+}
+.logo span{color:var(--sage)}
+nav{display:flex;gap:35px}
+nav a{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:1.2px;
+  font-weight:700;
+}
+.right-label{
+  font-size:10px;
+  letter-spacing:1.3px;
+}
+.hero{
+  max-width:1500px;
+  margin:auto;
+  padding:85px 6%;
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  align-items:center;
+  gap:60px;
+}
+.eyebrow{
+  font-size:11px;
+  letter-spacing:2.4px;
+  font-weight:700;
+  text-transform:uppercase;
+  color:var(--sage);
+}
+h1,h2,h3,p{margin-top:0}
+h1{
+  font-family:Manrope,sans-serif;
+  font-size:clamp(50px,6.4vw,96px);
+  font-weight:500;
+  letter-spacing:-5px;
+  line-height:1.07;
+  margin:25px 0;
+}
+.hero-copy{
+  max-width:410px;
+  font-size:15px;
+  line-height:1.9;
+  color:var(--muted);
+}
+.btn{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  gap:18px;
+  background:var(--ink);
+  color:#fff;
+  border:1px solid var(--ink);
+  padding:19px 29px;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+}
+.btn:hover{background:#494d43}
+.btn:disabled{
+  background:#aaa9a3;
+  border-color:#aaa9a3;
+  cursor:not-allowed;
+}
+.hero-photo{
+  background:#eae7e0;
+  min-height:490px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.hero-photo img{
+  display:block;
+  width:100%;
+  height:100%;
+  max-height:560px;
+  object-fit:contain;
+}
+.hero-label{
+  position:absolute;
+  left:22px;
+  bottom:22px;
+  padding:14px 19px;
+  background:#fff;
+  font-size:11px;
+  letter-spacing:1px;
+}
+.section{
+  max-width:1500px;
+  margin:auto;
+  padding:75px 6%;
+}
+.section h2{
+  font-family:Manrope,sans-serif;
+  font-size:clamp(32px,4vw,53px);
+  letter-spacing:-2.5px;
+  font-weight:500;
+  margin:15px 0;
+}
+.subtext{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.8;
+}
+.product-layout{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:45px;
+  margin-top:38px;
+}
+.gallery{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.main-photo{
+  background:#eae8e2;
+  min-height:510px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+.main-photo img{
+  width:100%;
+  max-height:550px;
+  object-fit:contain;
+}
+.photo-placeholder{
+  padding:35px;
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.9;
+}
+.photo-placeholder strong{
+  display:block;
+  font-size:20px;
+  color:var(--ink);
+}
+.gallery-tag{
+  position:absolute;
+  top:20px;
+  left:20px;
+  background:#fff;
+  padding:12px 15px;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:1.2px;
+}
+.product-panel{
+  background:#fff;
+  padding:45px;
+}
+.product-panel h3{
+  font-family:Manrope,sans-serif;
+  font-size:clamp(27px,3vw,39px);
+  font-weight:600;
+  letter-spacing:-1.8px;
+  margin:17px 0 12px;
+}
+.price{
+  font-size:25px;
+  font-weight:700;
+  margin:18px 0;
+}
+.divider{
+  border-top:1px solid var(--line);
+  margin:25px 0;
+}
+.swatches{
+  display:flex;
+  flex-wrap:wrap;
+  gap:15px;
+  margin:20px 0;
+}
+.swatch{
+  width:35px;
+  height:35px;
+  border-radius:50%;
+  border:1px solid #bbb;
+}
+.swatch.active{
+  outline:2px solid var(--ink);
+  outline-offset:4px;
+}
+.field-label{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:1.2px;
+  font-weight:700;
+}
+.color-selected{
+  font-size:14px;
+  font-weight:600;
+  margin:12px 0;
+}
+.stock{
+  color:var(--muted);
+  font-size:12px;
+  margin:18px 0;
+}
+.product-panel .btn{
+  width:100%;
+  margin-top:12px;
+}
+.source-link{
+  display:block;
+  text-align:center;
+  margin:19px 0 0;
+  text-decoration:underline;
+  font-size:12px;
+  color:var(--muted);
+}
+.specs{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+.spec{
+  background:#f6f4f0;
+  padding:18px;
+}
+.spec strong{
+  display:block;
+  font-size:14px;
+  margin-top:8px;
+}
+.spec small{
+  color:var(--muted);
+  font-size:11px;
+}
+.features{
+  background:#e9e7df;
+  padding:75px 6%;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:40px;
+  text-align:center;
+}
+.feature-icon{
+  font-size:28px;
+  margin-bottom:18px;
+}
+.features strong{
+  font-size:15px;
+}
+.features p{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.8;
+  max-width:260px;
+  margin:12px auto;
+}
+.editorial{
+  max-width:1000px;
+  margin:auto;
+  text-align:center;
+  padding:105px 6%;
+}
+.editorial h2{
+  font-family:Manrope,sans-serif;
+  font-size:clamp(34px,5vw,66px);
+  font-weight:500;
+  letter-spacing:-3px;
+  line-height:1.15;
+  margin:22px 0;
+}
+.editorial p{
+  font-size:14px;
+  line-height:1.9;
+  color:var(--muted);
+}
+footer{
+  background:var(--ink);
+  color:#fff;
+  padding:65px 6% 30px;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  gap:35px;
+}
+footer p,footer a{
+  color:#bdbeb7;
+  font-size:12px;
+  line-height:2;
+}
+footer strong{
+  font-size:12px;
+}
+.footer-bottom{
+  border-top:1px solid #4a4c46;
+  padding-top:24px;
+  margin-top:55px;
+  color:#aaa;
+  font-size:11px;
+}
+@media(max-width:850px){
+  header{height:65px;padding:0 5%}
+  nav,.right-label{display:none}
+  .hero{
+    grid-template-columns:1fr;
+    padding:55px 5%;
+    gap:30px;
+  }
+  h1{letter-spacing:-3px}
+  .hero-photo{min-height:320px}
+  .section{padding:55px 5%}
+  .product-layout{
+    grid-template-columns:1fr;
+    gap:15px;
+  }
+  .main-photo{min-height:320px}
+  .product-panel{padding:28px 23px}
+  .features{grid-template-columns:1fr}
+  .editorial{padding:75px 7%}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .footer-grid>div:first-child{grid-column:span 2}
+}
+</style>
 </head>
+
 <body>
-  <header>
-    <div class="logo">FORM</div>
-    <nav>THE COLLECTIONS &nbsp; / &nbsp; MODERN LIVING</nav>
-  </header>
 
-  <section class="hero">
-    <div class="eyebrow">FORM Living — The Cloud Collection</div>
-    <h1>Comfort, reimagined.</h1>
-    <p>Soft textures. Modern silhouettes. Furniture designed for everyday living.</p>
-  </section>
+<div class="announcement">
+  TEDDY COUCHES · MODERN COMFORT
+</div>
 
-  <main class="products" id="products"></main>
+<header>
+  <a class="logo" href="#">teddy<span>.</span></a>
 
-  <footer>
-    FORM Living · United States shipping only<br><br>
-    Product availability is subject to confirmation.
-  </footer>
+  <nav>
+    <a href="#shop">Shop</a>
+    <a href="#features">The Details</a>
+    <a href="#about">Our Story</a>
+  </nav>
 
-  <script>
-    const WALMART_URL = "https://www.walmart.com/ip/17767458308";
-    const PRICE = 499.99;
+  <div class="right-label">THE COMFORT EDIT / 2026</div>
+</header>
 
-    const colors = {
-      "Black": "#242424",
-      "Gray": "#858585",
-      "Light Gray": "#c8c8c8",
-      "Brown": "#79533b",
-      "White": "#f1efe9",
-      "Blue": "#637d9b",
-      "Olive Green": "#77784d",
-      "Light Green": "#a9bb96",
-      "Orange": "#d47b46",
-      "Pink": "#dda5b6"
-    };
+<main>
 
-    const products = [
-      {
-        id: "essential",
-        name: "The Essential Cloud Sofa",
-        collection: "The Neutral Collection",
-        description: "A relaxed convertible sofa with soft corduroy upholstery and a low-profile silhouette.",
-        colors: ["Black", "Gray", "Light Gray", "Brown", "White"]
-      },
-      {
-        id: "aura",
-        name: "The Aura Cloud Sofa",
-        collection: "The Color Collection",
-        description: "The same comfortable convertible design in expressive, contemporary colors.",
-        colors: ["Blue", "Olive Green", "Light Green", "Orange", "Pink"]
-      }
-    ];
+<section class="hero">
+  <div>
+    <div class="eyebrow">Meet Teddy Couches</div>
+    <h1>Comfort<br>looks good<br>on you.</h1>
+    <p class="hero-copy">
+      The softest spot in the room. Meet our modern
+      three-seater convertible sofa, designed for
+      effortless lounging and everyday living.
+    </p>
+    <a href="#shop" class="btn">
+      Shop Teddy Couches ↗
+    </a>
+  </div>
 
-    let inventory = {};
-    const selections = {};
+  <div class="hero-photo" id="heroPhoto">
+    <div class="photo-placeholder">
+      Loading product photo...
+    </div>
+    <div class="hero-label">
+      THE TEDDY COLLECTION · 01
+    </div>
+  </div>
+</section>
 
-    function stockStatus(color) {
-      const item = inventory[color];
-      if (!item) return "unknown";
+<section class="section" id="shop">
+  <div class="eyebrow">The Teddy Collection</div>
+  <h2>Your new favorite place to land.</h2>
+  <p class="subtext">
+    One iconic three-seater silhouette. Ten colors.
+    Endless ways to get comfortable.
+  </p>
 
-      if (typeof item === "string") {
-        return ["available", "out_of_stock"].includes(item)
-          ? item : "unknown";
-      }
+  <div class="product-layout">
+    <div class="gallery">
+      <div class="main-photo" id="mainPhoto">
+        <div class="gallery-tag">3 SEATER ONLY</div>
+      </div>
+    </div>
 
-      const status = item.status;
-      return ["available", "out_of_stock"].includes(status)
-        ? status : "unknown";
+    <div class="product-panel">
+      <div class="eyebrow">01 / Teddy Collection</div>
+
+      <h3>Teddy Couches</h3>
+
+      <p class="subtext">
+        78-inch convertible corduroy sleeper sofa.
+        Plush foam, soft ribbed texture, and a
+        relaxed contemporary silhouette.
+      </p>
+
+      <div class="price">$499.99</div>
+
+      <div class="divider"></div>
+
+      <div class="field-label">Choose your color</div>
+
+      <div class="swatches" id="swatches"></div>
+
+      <div class="color-selected" id="selectedColor">
+        Black
+      </div>
+
+      <div class="stock" id="stockStatus">
+        Availability not yet verified
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="field-label">Product details</div>
+
+      <div class="specs" style="margin-top:20px">
+        <div class="spec">
+          <small>Seating</small>
+          <strong>3 Seater</strong>
+        </div>
+        <div class="spec">
+          <small>Width</small>
+          <strong>77.9 inches</strong>
+        </div>
+        <div class="spec">
+          <small>Material</small>
+          <strong>Corduroy</strong>
+        </div>
+        <div class="spec">
+          <small>Function</small>
+          <strong>Convertible</strong>
+        </div>
+      </div>
+
+      <button class="btn" disabled>
+        Checkout coming soon
+      </button>
+
+      <a id="sourceLink" class="source-link"
+         href="https://www.walmart.com/ip/17767458308"
+         target="_blank" rel="noopener noreferrer">
+        View original product listing ↗
+      </a>
+
+      <p class="subtext" style="font-size:11px;margin-top:24px">
+        Availability and delivery are confirmed
+        before purchase. Checkout is not yet active.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div>
+    <div class="feature-icon">✳</div>
+    <strong>Cloud-like comfort</strong>
+    <p>
+      Soft corduroy upholstery with supportive
+      foam cushioning.
+    </p>
+  </div>
+  <div>
+    <div class="feature-icon">▣</div>
+    <strong>Made to transform</strong>
+    <p>
+      A versatile design that converts from a
+      sofa into a sleeper.
+    </p>
+  </div>
+  <div>
+    <div class="feature-icon">◇</div>
+    <strong>Effortless setup</strong>
+    <p>
+      Compressed packaging with no tools
+      required for setup.
+    </p>
+  </div>
+</section>
+
+<section class="editorial" id="about">
+  <div class="eyebrow">The Teddy Philosophy</div>
+  <h2>Make space for the softer side of life.</h2>
+  <p>
+    Furniture should be inviting, versatile,
+    and beautifully simple. Teddy Couches brings
+    relaxed modern design into the everyday.
+  </p>
+  <a href="#shop" class="btn">Find your Teddy ↗</a>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="logo">teddy<span>.</span></div>
+      <p>Modern comfort for everyday living.</p>
+    </div>
+    <div>
+      <strong>Explore</strong>
+      <p><a href="#shop">Shop Teddy Couches</a></p>
+      <p><a href="#features">Product details</a></p>
+    </div>
+    <div>
+      <strong>Information</strong>
+      <p>United States delivery</p>
+      <p>3-seater sofas only</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 Teddy Couches. All rights reserved.
+  </div>
+</footer>
+
+<script>
+/*
+  TEDDY COUCHES — PRODUCT DATA
+
+  All ten Walmart IDs below come from the
+  individual product links supplied.
+
+  Only the black product has a direct image URL
+  currently populated.
+
+  Add verified, commercially authorized image
+  URLs to the image fields for the other colors.
+*/
+
+const SELLING_PRICE = 499.99;
+
+const products = [
+  {
+    color:"Black",
+    hex:"#292929",
+    walmartId:"17767458308",
+    image:"https://i5.walmartimages.com/seo/78-Boneless-Convertible-Sleeper-Sofa-Bed-Holaki-Corduroy-Compression-Folding-Sofa-Pillow-3-Seat-Fixed-Shape-Frame-Floor-Sofas-Lounge-Couch-Living-Roo_784d7799-8794-49be-84ca-ae34104474f7.58c7e3873ec030105502520f1051bbd8.jpeg?odnBg=FFFFFF&odnHeight=1200&odnWidth=1200"
+  },
+  {
+    color:"Gray",
+    hex:"#858585",
+    walmartId:"17805660327",
+    image:""
+  },
+  {
+    color:"Light Gray",
+    hex:"#c9c9c9",
+    walmartId:"17731973728",
+    image:""
+  },
+  {
+    color:"Brown",
+    hex:"#795640",
+    walmartId:"17243152385",
+    image:""
+  },
+  {
+    color:"White",
+    hex:"#f0eee8",
+    walmartId:"17204274530",
+    image:""
+  },
+  {
+    color:"Blue",
+    hex:"#6983a1",
+    walmartId:"18674805755",
+    image:""
+  },
+  {
+    color:"Olive Green",
+    hex:"#777e54",
+    walmartId:"17780903849",
+    image:""
+  },
+  {
+    color:"Light Green",
+    hex:"#b0c19f",
+    walmartId:"17747969135",
+    image:""
+  },
+  {
+    color:"Orange",
+    hex:"#d67e4b",
+    walmartId:"18246669334",
+    image:""
+  },
+  {
+    color:"Pink",
+    hex:"#dca8b7",
+    walmartId:"17780011195",
+    image:""
+  }
+];
+
+let selected = products[0];
+let inventory = {};
+
+function walmartUrl(product){
+  return "https://www.walmart.com/ip/" +
+    encodeURIComponent(product.walmartId);
+}
+
+function makePlaceholder(product){
+  const box=document.createElement("div");
+  box.className="photo-placeholder";
+
+  const title=document.createElement("strong");
+  title.textContent=product.color+" Teddy Couch";
+
+  const message=document.createElement("p");
+  message.textContent=
+    "Matching original product photograph "+
+    "has not been added yet.";
+
+  const link=document.createElement("a");
+  link.href=walmartUrl(product);
+  link.target="_blank";
+  link.rel="noopener noreferrer";
+  link.textContent="View exact Walmart product ↗";
+  link.style.textDecoration="underline";
+
+  box.append(title,message,link);
+  return box;
+}
+
+function addProductPhoto(container,product){
+  container.replaceChildren();
+
+  if(!product.image){
+    container.appendChild(makePlaceholder(product));
+    return;
+  }
+
+  const img=document.createElement("img");
+  img.alt=product.color+" three-seat convertible sofa";
+  img.loading="lazy";
+
+  img.onerror=()=>{
+    container.replaceChildren(makePlaceholder(product));
+  };
+
+  img.src=product.image;
+  container.appendChild(img);
+}
+
+function getInventoryStatus(product){
+  const record=inventory[product.color];
+
+  if(!record){
+    return "Availability not yet verified";
+  }
+
+  const status=typeof record==="string"
+    ?record:record.status;
+
+  if(status==="available"){
+    return "Listed as available — delivery unconfirmed";
+  }
+
+  if(status==="out_of_stock"){
+    return "Currently listed as sold out";
+  }
+
+  return "Availability not yet verified";
+}
+
+function renderSwatches(){
+  const area=document.getElementById("swatches");
+  area.replaceChildren();
+
+  products.forEach(product=>{
+    const button=document.createElement("button");
+
+    button.className="swatch"+
+      (selected.color===product.color?" active":"");
+
+    button.style.background=product.hex;
+    button.title=product.color;
+    button.type="button";
+
+    button.setAttribute(
+      "aria-label","Select "+product.color
+    );
+
+    button.setAttribute(
+      "aria-pressed",
+      String(selected.color===product.color)
+    );
+
+    button.addEventListener("click",()=>{
+      selected=product;
+      updateProduct();
+    });
+
+    area.appendChild(button);
+  });
+}
+
+function updateProduct(){
+  document.getElementById("selectedColor")
+    .textContent=selected.color;
+
+  document.getElementById("stockStatus")
+    .textContent=getInventoryStatus(selected);
+
+  document.getElementById("sourceLink")
+    .href=walmartUrl(selected);
+
+  const main=document.getElementById("mainPhoto");
+
+  addProductPhoto(main,selected);
+
+  const tag=document.createElement("div");
+  tag.className="gallery-tag";
+  tag.textContent="3 SEATER ONLY";
+  main.appendChild(tag);
+
+  renderSwatches();
+}
+
+async function loadInventory(){
+  try{
+    const response=await fetch(
+      "./inventory.json?updated="+Date.now(),
+      {cache:"no-store"}
+    );
+
+    if(!response.ok){
+      throw new Error("Inventory unavailable");
     }
 
-    function render() {
-      const container = document.getElementById("products");
-      container.innerHTML = "";
+    const data=await response.json();
 
-      products.forEach(product => {
-        const selected = selections[product.id] || product.colors[0];
-        selections[product.id] = selected;
+    inventory=data.colors||data.inventory||{};
+  }catch(error){
+    inventory={};
+  }
 
-        const card = document.createElement("article");
-        card.className = "product";
+  updateProduct();
+}
 
-        const photo = document.createElement("div");
-        photo.className = "photo";
+function initializeHero(){
+  const hero=document.getElementById("heroPhoto");
+  const label=hero.querySelector(".hero-label");
 
-        const placeholder = document.createElement("div");
-        placeholder.className = "placeholder";
-        placeholder.textContent =
-          selected + " — Original product photo pending";
-        photo.appendChild(placeholder);
+  addProductPhoto(hero,products[0]);
 
-        const details = document.createElement("div");
-        details.className = "details";
+  if(label){
+    hero.appendChild(label);
+  }
+}
 
-        const collection = document.createElement("div");
-        collection.className = "eyebrow";
-        collection.textContent = product.collection;
+initializeHero();
+updateProduct();
+loadInventory();
 
-        const title = document.createElement("h2");
-        title.textContent = product.name;
+// Refreshes the inventory.json file.
+// Does not scrape Walmart or verify live stock.
+setInterval(loadInventory,300000);
+</script>
 
-        const price = document.createElement("div");
-        price.className = "price";
-        price.textContent = "$" + PRICE.toFixed(2);
-
-        const description = document.createElement("p");
-        description.className = "description";
-        description.textContent = product.description;
-
-        const selectedLabel = document.createElement("p");
-        selectedLabel.textContent = "Color: " + selected;
-
-        const swatches = document.createElement("div");
-        swatches.className = "swatches";
-
-        product.colors.forEach(color => {
-          const button = document.createElement("button");
-          button.className =
-            "swatch" + (selected === color ? " active" : "");
-          button.style.backgroundColor = colors[color];
-          button.title = color;
-          button.setAttribute("aria-label", color);
-          button.setAttribute("aria-pressed", selected === color);
-
-          button.onclick = () => {
-            selections[product.id] = color;
-            render();
-          };
-
-          swatches.appendChild(button);
-        });
-
-        const status = stockStatus(selected);
-        const statusLabel = document.createElement("div");
-        statusLabel.className = "status";
-
-        if (status === "available") {
-          statusLabel.classList.add("available");
-          statusLabel.textContent = "Listed as available";
-        } else if (status === "out_of_stock") {
-          statusLabel.classList.add("unavailable");
-          statusLabel.textContent = "Currently sold out";
-        } else {
-          statusLabel.classList.add("unknown");
-          statusLabel.textContent = "Availability unconfirmed";
-        }
-
-        const buy = document.createElement("button");
-        buy.className = "buy";
-        buy.disabled = true;
-        buy.textContent = "Checkout coming soon";
-
-        const source = document.createElement("p");
-        source.className = "description";
-        source.style.fontSize = "12px";
-        source.textContent =
-          "Availability and delivery must be confirmed before ordering.";
-
-        details.append(
-          collection, title, price, description,
-          selectedLabel, swatches, statusLabel, buy, source
-        );
-
-        card.append(photo, details);
-        container.appendChild(card);
-      });
-    }
-
-    async function loadInventory() {
-      try {
-        const response = await fetch(
-          "./inventory.json?t=" + Date.now(),
-          { cache: "no-store" }
-        );
-
-        if (!response.ok) throw new Error("Inventory unavailable");
-
-        const data = await response.json();
-        inventory = data.colors || data.inventory || {};
-      } catch (error) {
-        inventory = {};
-        console.warn("Stock data unavailable:", error);
-      }
-
-      render();
-    }
-
-    render();
-    loadInventory();
-    setInterval(loadInventory, 5 * 60 * 1000);
-  </script>
 </body>
 </html>
