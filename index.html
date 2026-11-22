@@ -1,0 +1,337 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FORM Living | Modern Furniture</title>
+  <style>
+    :root {
+      --bg: #f8f7f4;
+      --text: #242321;
+      --muted: #77736d;
+      --line: #e6e2dc;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    header {
+      padding: 22px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 5px;
+    }
+    nav { font-size: 13px; letter-spacing: 1px; }
+    .hero {
+      text-align: center;
+      padding: 75px 20px 55px;
+    }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(38px, 6vw, 76px);
+      font-weight: normal;
+      margin: 18px 0;
+    }
+    .hero p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .products {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px 5% 80px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 35px;
+    }
+    .product {
+      background: #fff;
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+    .photo {
+      height: 360px;
+      background: #eae7e1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .placeholder {
+      color: #777;
+      padding: 30px;
+      text-align: center;
+    }
+    .details { padding: 28px; }
+    h2 {
+      font-family: Georgia, serif;
+      font-weight: normal;
+      font-size: 29px;
+      margin: 8px 0;
+    }
+    .price { font-size: 20px; margin: 12px 0 22px; }
+    .description {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .swatches {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 22px 0;
+    }
+    .swatch {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      border: 2px solid #ddd;
+      cursor: pointer;
+    }
+    .swatch.active { outline: 2px solid #222; outline-offset: 3px; }
+    .swatch:focus-visible { outline: 3px solid #333; }
+    .status { font-size: 13px; margin: 15px 0; }
+    .available { color: #286b43; }
+    .unavailable { color: #9d4a3d; }
+    .unknown { color: #8a6d32; }
+    .buy {
+      width: 100%;
+      padding: 17px;
+      border: 0;
+      background: #242321;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+    }
+    .buy:disabled {
+      background: #aaa6a0;
+      cursor: not-allowed;
+    }
+    footer {
+      text-align: center;
+      padding: 45px 20px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+    @media (max-width: 750px) {
+      .products { grid-template-columns: 1fr; }
+      .photo { height: 290px; }
+      nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">FORM</div>
+    <nav>THE COLLECTIONS &nbsp; / &nbsp; MODERN LIVING</nav>
+  </header>
+
+  <section class="hero">
+    <div class="eyebrow">FORM Living — The Cloud Collection</div>
+    <h1>Comfort, reimagined.</h1>
+    <p>Soft textures. Modern silhouettes. Furniture designed for everyday living.</p>
+  </section>
+
+  <main class="products" id="products"></main>
+
+  <footer>
+    FORM Living · United States shipping only<br><br>
+    Product availability is subject to confirmation.
+  </footer>
+
+  <script>
+    const WALMART_URL = "https://www.walmart.com/ip/17767458308";
+    const PRICE = 499.99;
+
+    const colors = {
+      "Black": "#242424",
+      "Gray": "#858585",
+      "Light Gray": "#c8c8c8",
+      "Brown": "#79533b",
+      "White": "#f1efe9",
+      "Blue": "#637d9b",
+      "Olive Green": "#77784d",
+      "Light Green": "#a9bb96",
+      "Orange": "#d47b46",
+      "Pink": "#dda5b6"
+    };
+
+    const products = [
+      {
+        id: "essential",
+        name: "The Essential Cloud Sofa",
+        collection: "The Neutral Collection",
+        description: "A relaxed convertible sofa with soft corduroy upholstery and a low-profile silhouette.",
+        colors: ["Black", "Gray", "Light Gray", "Brown", "White"]
+      },
+      {
+        id: "aura",
+        name: "The Aura Cloud Sofa",
+        collection: "The Color Collection",
+        description: "The same comfortable convertible design in expressive, contemporary colors.",
+        colors: ["Blue", "Olive Green", "Light Green", "Orange", "Pink"]
+      }
+    ];
+
+    let inventory = {};
+    const selections = {};
+
+    function stockStatus(color) {
+      const item = inventory[color];
+      if (!item) return "unknown";
+
+      if (typeof item === "string") {
+        return ["available", "out_of_stock"].includes(item)
+          ? item : "unknown";
+      }
+
+      const status = item.status;
+      return ["available", "out_of_stock"].includes(status)
+        ? status : "unknown";
+    }
+
+    function render() {
+      const container = document.getElementById("products");
+      container.innerHTML = "";
+
+      products.forEach(product => {
+        const selected = selections[product.id] || product.colors[0];
+        selections[product.id] = selected;
+
+        const card = document.createElement("article");
+        card.className = "product";
+
+        const photo = document.createElement("div");
+        photo.className = "photo";
+
+        const placeholder = document.createElement("div");
+        placeholder.className = "placeholder";
+        placeholder.textContent =
+          selected + " — Original product photo pending";
+        photo.appendChild(placeholder);
+
+        const details = document.createElement("div");
+        details.className = "details";
+
+        const collection = document.createElement("div");
+        collection.className = "eyebrow";
+        collection.textContent = product.collection;
+
+        const title = document.createElement("h2");
+        title.textContent = product.name;
+
+        const price = document.createElement("div");
+        price.className = "price";
+        price.textContent = "$" + PRICE.toFixed(2);
+
+        const description = document.createElement("p");
+        description.className = "description";
+        description.textContent = product.description;
+
+        const selectedLabel = document.createElement("p");
+        selectedLabel.textContent = "Color: " + selected;
+
+        const swatches = document.createElement("div");
+        swatches.className = "swatches";
+
+        product.colors.forEach(color => {
+          const button = document.createElement("button");
+          button.className =
+            "swatch" + (selected === color ? " active" : "");
+          button.style.backgroundColor = colors[color];
+          button.title = color;
+          button.setAttribute("aria-label", color);
+          button.setAttribute("aria-pressed", selected === color);
+
+          button.onclick = () => {
+            selections[product.id] = color;
+            render();
+          };
+
+          swatches.appendChild(button);
+        });
+
+        const status = stockStatus(selected);
+        const statusLabel = document.createElement("div");
+        statusLabel.className = "status";
+
+        if (status === "available") {
+          statusLabel.classList.add("available");
+          statusLabel.textContent = "Listed as available";
+        } else if (status === "out_of_stock") {
+          statusLabel.classList.add("unavailable");
+          statusLabel.textContent = "Currently sold out";
+        } else {
+          statusLabel.classList.add("unknown");
+          statusLabel.textContent = "Availability unconfirmed";
+        }
+
+        const buy = document.createElement("button");
+        buy.className = "buy";
+        buy.disabled = true;
+        buy.textContent = "Checkout coming soon";
+
+        const source = document.createElement("p");
+        source.className = "description";
+        source.style.fontSize = "12px";
+        source.textContent =
+          "Availability and delivery must be confirmed before ordering.";
+
+        details.append(
+          collection, title, price, description,
+          selectedLabel, swatches, statusLabel, buy, source
+        );
+
+        card.append(photo, details);
+        container.appendChild(card);
+      });
+    }
+
+    async function loadInventory() {
+      try {
+        const response = await fetch(
+          "./inventory.json?t=" + Date.now(),
+          { cache: "no-store" }
+        );
+
+        if (!response.ok) throw new Error("Inventory unavailable");
+
+        const data = await response.json();
+        inventory = data.colors || data.inventory || {};
+      } catch (error) {
+        inventory = {};
+        console.warn("Stock data unavailable:", error);
+      }
+
+      render();
+    }
+
+    render();
+    loadInventory();
+    setInterval(loadInventory, 5 * 60 * 1000);
+  </script>
+</body>
+</html>
